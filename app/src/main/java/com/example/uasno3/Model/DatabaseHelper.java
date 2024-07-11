@@ -51,6 +51,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_MAHASISWA, null, values);
         return result != -1;
     }
+    public boolean checkMahasiswa(String NIM) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_MAHASISWA, new String[]{COLUMN_NIM},
+                COLUMN_NIM + "=?",
+                new String[]{NIM}, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+        return count > 0;
+    }
 
     public List<Mahasiswa> getMahasiswa() {
         List<Mahasiswa> mahasiswaList = new ArrayList<>();
