@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{NIM}, null, null, null);
         int count = cursor.getCount();
         cursor.close();
-        db.close();
+//        db.close();
         return count > 0;
     }
 

@@ -34,6 +34,7 @@ public class Delete extends AppCompatActivity{
                     Toast.makeText(Delete.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
                     boolean result = dbHelper.deleteMahasiswa(Nim);
+//                    System.out.println(result);
                     if (result) {
                         Toast.makeText(Delete.this, "Delete Successful", Toast.LENGTH_SHORT).show();
                     } else {

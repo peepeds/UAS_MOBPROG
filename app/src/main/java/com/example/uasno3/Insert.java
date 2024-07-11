@@ -48,11 +48,10 @@ public class Insert extends AppCompatActivity {
                 if (Nama.isEmpty() || NIM.isEmpty() || Matkul.isEmpty() || StringIPK.isEmpty()) {
                     Toast.makeText(Insert.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean result = dbHelper.addMahasiswa(Nama, NIM, StringIPK, Matkul);
 //                    if(NIM.length()!=10){
 //                        Toast.makeText(Insert.this, "BINUS NIM must be 10 characters", Toast.LENGTH_SHORT).show();
 //                    }
-                    if(Double.parseDouble(StringIPK)>4){
+                    if(Double.parseDouble(StringIPK)>4 || Double.parseDouble(StringIPK)<0){
                         validate = false;
                         Toast.makeText(Insert.this, "IPK cann't be greater than 4", Toast.LENGTH_SHORT).show();
                     }
@@ -61,7 +60,8 @@ public class Insert extends AppCompatActivity {
                         Toast.makeText(Insert.this, "NIM already exists", Toast.LENGTH_SHORT).show();
                     }
 
-                    if (result && validate){
+                    if (validate){
+                        dbHelper.addMahasiswa(Nama, NIM, StringIPK, Matkul);
                         Toast.makeText(Insert.this, "Insert Successful", Toast.LENGTH_SHORT).show();
 
                     }
